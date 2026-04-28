@@ -1,6 +1,5 @@
 """
 train.py
-─────────────────────────────────────────────────────────────
 End-to-end training script for StockSense AI.
 Trains LSTM + XGBoost ensemble, runs backtest, saves all models.
 
@@ -51,14 +50,14 @@ def train_single_ticker(
     logger.info(f"  Training pipeline for {ticker}")
     logger.info(f"{'='*60}\n")
 
-    # ── 1. Data Ingestion ──────────────────────────────────────
+   
     logger.info("Step 1/6 — Data Ingestion")
     from data.ingestion import fetch_stock_data, get_ticker_info
     df_raw = fetch_stock_data(ticker, period=period)
     info   = get_ticker_info(ticker)
     logger.info(f"  {info.get('name', ticker)} | {info.get('sector', '')} | {len(df_raw)} rows")
 
-    # ── 2. Feature Engineering ─────────────────────────────────
+    
     logger.info("Step 2/6 — Feature Engineering")
     from features.engineering import (
         build_features, get_feature_columns, scale_features, make_sequences
